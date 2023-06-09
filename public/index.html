@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Gun Control</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            gap: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="registerForm">
+        <h2>Register Gun</h2>
+        <input type="text" id="registerGunId" placeholder="Gun ID">
+        <input type="text" id="registerOwnerId" placeholder="Owner ID">
+        <button type="submit">Register</button>
+    </form>
+
+    <form id="verifyForm">
+        <h2>Verify Ownership</h2>
+        <input type="text" id="verifyHash" placeholder="Block Hash">
+        <button type="submit">Verify</button>
+    </form>
+
+    <div id="message"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
