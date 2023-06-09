@@ -51,5 +51,48 @@ app.get('/verify', (req, res) => {
 
 app.use(express.static('public'));
 
+
+app.post('/transfer', (req, res) => {
+    const { gun_id, old_owner_id, new_owner_id } = req.body;
+
+    if (!gun_id || !old_owner_id || !new_owner_id) {
+        return res.status(400).json({ message: 'Missing data' });
+    }
+
+    // find the latest block for the gun
+    let gunBlock = null;
+    for (let i = blockchain.length - 1; i >= 0; i--) {
+        if (blockchain[i].data.gun_id === gun_id) {
+            gunBlock = blockchain[i];
+            break;
+        }
+    }
+
+    // verify the old owner
+    if (!gunBlock || gunBlock.data.owner_id !== old_owner_id) {
+        return res.status(400).json({ message: 'Old owner verification failed' });
+    }
+
+    // create a new block for the transfer
+    const blockData = {
+        gun_id,
+        owner_id: new_owner_id,
+        timestamp: new Date().toISOString(),
+        previousHash: gunBlock.hash,
+    };
+
+    const blockHash = crypto.createHash('sha256').update(JSON.stringify(blockData)).digest('hex');
+
+    const block = {
+        hash: blockHash,
+        data: blockData,
+    };
+
+    blockchain.push(block);
+    lastHash = blockHash;
+
+    return res.status(200).json({ message: 'Gun transferred successfully', blockHash });
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

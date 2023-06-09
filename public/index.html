@@ -4,37 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blockchain Gun Control</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-            gap: 20px;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-    </style>
 </head>
 <body>
-    <form id="registerForm">
-        <h2>Register Gun</h2>
-        <input type="text" id="registerGunId" placeholder="Gun ID">
-        <input type="text" id="registerOwnerId" placeholder="Owner ID">
-        <button type="submit">Register</button>
+    <h1>Blockchain Gun Control</h1>
+    <h2>Register Gun</h2>
+    <form id="register-form">
+        <label for="gun-id">Gun ID:</label><br>
+        <input type="text" id="gun-id" name="gun-id"><br>
+        <label for="owner-id">Owner ID:</label><br>
+        <input type="text" id="owner-id" name="owner-id"><br>
+        <input type="submit" value="Register">
+    </form>
+    <p id="block-hash-display"></p>
+    <button id="copy-button" style="display: none;">Copy Block Hash</button>
+
+    <h2>Verify Ownership</h2>
+    <form id="verify-form">
+        <label for="block-hash">Block Hash:</label><br>
+        <input type="text" id="block-hash" name="block-hash"><br>
+        <input type="submit" value="Verify">
     </form>
 
-    <form id="verifyForm">
-        <h2>Verify Ownership</h2>
-        <input type="text" id="verifyHash" placeholder="Block Hash">
-        <button type="submit">Verify</button>
+    <h2>Transfer Ownership</h2>
+    <form id="transfer-form">
+        <label for="gun-id-transfer">Gun ID:</label><br>
+        <input type="text" id="gun-id-transfer" name="gun-id-transfer"><br>
+        <label for="old-owner-id">Old Owner ID:</label><br>
+        <input type="text" id="old-owner-id" name="old-owner-id"><br>
+        <label for="new-owner-id">New Owner ID:</label><br>
+        <input type="text" id="new-owner-id" name="new-owner-id"><br>
+        <input type="submit" value="Transfer">
     </form>
-
-    <div id="message"></div>
 
     <script src="app.js"></script>
 </body>
