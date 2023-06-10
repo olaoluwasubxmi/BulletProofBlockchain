@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font: 400 15px/1.8 Arial, sans-serif;
+            color: #222;
+        }
+
+        .bg-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            transform: translate(-50%, -50%);
+            background: no-repeat;
+            background-size: cover;
+        }
+    </style>
     <title>Blockchain Gun Control</title>
 </head>
 <body>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" class="bg-video">
+        <source src="bg.mp4" type="video/mp4">
+    </video>
+
     <h1>Blockchain Gun Control</h1>
     <h2>Register Gun</h2>
     <form id="register-form">
